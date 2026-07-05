@@ -19,6 +19,8 @@
   <div
     class="collection-wrapper grid gap-style"
   >
+    {% render 'aurenyx-vendor-links' %}
+
     {% assign products_per_page = 24 %}
 
     {% if section.settings.enable_infinite_scroll == false %}

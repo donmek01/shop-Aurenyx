@@ -33,6 +33,12 @@
     assign is_vertical = true
   endif
   assign filter_param_name = filter.param_name | escape | replace: '.', '-'
+  assign filter_label = filter.label
+  if filter.param_name == 'filter.p.t.category'
+    assign filter_label = 'Kategorie'
+  elsif filter.param_name == 'filter.p.vendor'
+    assign filter_label = 'Hersteller'
+  endif
 -%}
 {% capture accordion_children %}
   <details
@@ -46,7 +52,7 @@
     {% endif %}
   >
     <summary class="facets__summary">
-      <span class="facets__label">{{ filter.label }}</span>
+      <span class="facets__label">{{ filter_label }}</span>
 
       <div class="facets__status-wrapper">
         {% if is_swatch %}
@@ -196,7 +202,7 @@
             {% if is_image %}
               style="--image-columns: {{ image_columns }};"
             {% endif %}
-            name="{{ filter.label }}"
+            name="{{ filter_label }}"
           >
             {%- for value in filter.values -%}
               {% liquid

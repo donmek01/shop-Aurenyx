@@ -35,6 +35,8 @@
   <div
     class="collection-wrapper grid gap-style{% if section.settings.product_grid_width == 'full-width' %} collection-wrapper--grid-full-width{% endif %}"
   >
+    {% render 'aurenyx-vendor-links' %}
+
     {% content_for 'block',
       type: 'filters',
       id: 'filters',
