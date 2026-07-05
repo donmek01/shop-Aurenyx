@@ -1,0 +1,56 @@
+{% liquid
+  assign collection_title = collection.title
+  assign collection_copy = collection.description
+
+  if collection.handle == 'all'
+    assign collection_title = 'Alle Produkte'
+    assign collection_copy = 'Die Standardkollektion /collections/all ist in diesem Shop leer. Der Shop nutzt die automatisch angelegte Collection Alle Produkte.'
+  endif
+
+  if collection_copy == blank
+    case collection.handle
+      when 'wella-professional'
+        assign collection_copy = 'Wella Professional Produkte fuer Salon, Haarfarbe, Pflege, Styling und professionelle Anwendung.'
+      when 'aurenyx-professional'
+        assign collection_copy = 'AURENYX Professional und hioo Eigenmarke fuer professionelle Haarpflege und Salonbedarf.'
+      when 'haarpflege'
+        assign collection_copy = 'Professionelle Haarpflege fuer Salons: Shampoo, Conditioner, Masken, Kuren und Leave-In Produkte.'
+      when 'haarfarbe-coloration'
+        assign collection_copy = 'Coloration, Haarfarbe, Toener, Entwickler und Blondierung fuer professionelle Farbdienstleistungen.'
+      when 'styling-finish'
+        assign collection_copy = 'Styling und Finish Produkte fuer Halt, Textur, Glanz und professionelle Salon-Ergebnisse.'
+      when 'friseurbedarf'
+        assign collection_copy = 'Friseurbedarf, Zubehoer, Verbrauchsmaterial, Organisation und Werkzeuge fuer den Salonalltag.'
+      when 'geraete-tools'
+        assign collection_copy = 'Professionelle Geraete und Tools fuer Friseur, Styling, Schnitt und Salonbetrieb.'
+      when 'alle-produkte'
+        assign collection_copy = 'Alle aktiven Shop-Produkte mit Bild und Bestand: Marken, Produkttypen und professionelle Salonartikel.'
+    endcase
+  endif
+%}
+
+<section class="aurenyx-collection-hero">
+  <div class="aurenyx-collection-hero__inner">
+    <div>
+      <div class="aurenyx-shop__eyebrow">Sortiment</div>
+      <h1>{{ collection_title }}</h1>
+      {% if collection_copy != blank %}
+        <div class="aurenyx-collection-hero__copy">{{ collection_copy }}</div>
+      {% endif %}
+    </div>
+
+    <div class="aurenyx-collection-hero__actions">
+      {% if collection.handle == 'all' %}
+        <a class="aurenyx-shop__button" href="/collections/alle-produkte">Alle Produkte öffnen</a>
+      {% endif %}
+      <a class="aurenyx-shop__link-button aurenyx-shop__link-button--light" href="{{ routes.root_url }}">Zur Shop-Startseite</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "AURENYX Collection Hero",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,295 @@
+<div class="aurenyx-shop">
+  <section class="aurenyx-shop__hero">
+    <div class="aurenyx-shop__container">
+      <div class="aurenyx-shop__eyebrow">Shop · Friseur- und Beautybedarf · B2B</div>
+      <h1 class="aurenyx-shop__title">{{ section.settings.heading }}</h1>
+      <p class="aurenyx-shop__copy">{{ section.settings.subheading }}</p>
+
+      <form class="aurenyx-shop__search" action="{{ routes.search_url }}" method="get" role="search">
+        <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Produkt, Marke, SKU oder EAN suchen">
+        <button class="aurenyx-shop__button" type="submit">Suchen</button>
+      </form>
+
+      <div class="aurenyx-shop__quicklinks">
+        <a class="aurenyx-shop__button" href="{{ section.settings.all_products_link }}">Wella Produkte ansehen</a>
+        <a class="aurenyx-shop__link-button" href="{{ section.settings.featured_link }}">Shop-Auswahl</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="aurenyx-shop__trust">
+    <div class="aurenyx-shop__container aurenyx-shop__trust-grid">
+      <div>100.000+ Produkte</div>
+      <div>13+ Jahre Erfahrung</div>
+      <div>Schnelle Lieferung</div>
+      <div>Fuer Salons & Fachpartner</div>
+    </div>
+  </section>
+
+  <section class="aurenyx-shop__section aurenyx-shop__section--compact">
+    <div class="aurenyx-shop__container">
+      <div class="aurenyx-shop__assortment">
+        <div class="aurenyx-shop__assortment-head">
+          <div>
+            <div class="aurenyx-shop__eyebrow">Produktsortiment</div>
+            <h2 class="aurenyx-shop__heading">{{ section.settings.assortment_heading }}</h2>
+          </div>
+        </div>
+
+        <div class="aurenyx-shop__category-grid">
+          {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+              {% if block.type == 'category_link' %}
+                <a class="aurenyx-shop__category" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+                  <strong>{{ block.settings.title }}</strong>
+                  {% if block.settings.description != blank %}<span>{{ block.settings.description }}</span>{% endif %}
+                </a>
+              {% endif %}
+            {% endfor %}
+          {% else %}
+            <a class="aurenyx-shop__category" href="/collections/wella-professional"><strong>Wella Professional</strong><span>Salonprodukte von Wella.</span></a>
+            <a class="aurenyx-shop__category" href="/collections/aurenyx-professional"><strong>Eigenmarke / hioo</strong><span>AURENYX PROFESSIONAL und hioo Produkte.</span></a>
+            <a class="aurenyx-shop__category" href="/collections/haarpflege"><strong>Haarpflege</strong><span>Shampoo, Conditioner, Masken und Leave-In.</span></a>
+            <a class="aurenyx-shop__category" href="/collections/shampoo"><strong>Shampoo</strong><span>Professionelle Shampoos fuer Salon und Fachhandel.</span></a>
+            <a class="aurenyx-shop__category" href="/collections/conditioner"><strong>Conditioner</strong><span>Pflege, Glanz und Kaemmbarkeit.</span></a>
+            <a class="aurenyx-shop__category" href="/collections/masken-kuren"><strong>Masken & Kuren</strong><span>Intensivpflege fuer den Salonalltag.</span></a>
+            <a class="aurenyx-shop__category" href="/collections/haarfarbe-coloration"><strong>Haarfarbe & Coloration</strong><span>Farbe, Toener und Nuancen.</span></a>
+            <a class="aurenyx-shop__category" href="/collections/entwickler-oxidation"><strong>Entwickler & Oxidation</strong><span>Oxidanten, Welloxon und Aktivatoren.</span></a>
+            <a class="aurenyx-shop__category" href="/collections/blondierung"><strong>Blondierung</strong><span>Blondierung, Bleach, Magma und Blondor.</span></a>
+            <a class="aurenyx-shop__category" href="/collections/styling-finish"><strong>Styling & Finish</strong><span>Spray, Gel, Wachs und Finish.</span></a>
+            <a class="aurenyx-shop__category" href="/collections/friseurbedarf"><strong>Friseurbedarf</strong><span>Zubehoer, Organisation und Verbrauch.</span></a>
+            <a class="aurenyx-shop__category" href="/collections/buersten-kaemme"><strong>Buersten & Kaemme</strong><span>Werkzeuge fuer Schnitt und Styling.</span></a>
+            <a class="aurenyx-shop__category" href="/collections/geraete-tools"><strong>Geraete & Tools</strong><span>Haartrockner, Tools und Technik.</span></a>
+            <a class="aurenyx-shop__category" href="/collections/augenbrauen-wimpern"><strong>Augenbrauen & Wimpern</strong><span>Beauty-Ergaenzungen fuer Profis.</span></a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aurenyx-shop__section aurenyx-shop__section--compact aurenyx-shop__section--flat">
+    <div class="aurenyx-shop__container">
+      <div class="aurenyx-shop__section-head aurenyx-shop__section-head--compact">
+        <div class="aurenyx-shop__eyebrow">Sortiment</div>
+        <h2 class="aurenyx-shop__heading">Produktbereiche</h2>
+      </div>
+      <div class="aurenyx-shop__area-row">
+        {% for block in section.blocks %}
+          {% if block.type == 'area_link' %}
+            <a class="aurenyx-shop__area" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+              {{ block.settings.title }}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {% liquid
+    assign home_collection = section.settings.home_collection
+  %}
+
+  {% if home_collection != blank and home_collection.products_count > 0 %}
+    <section class="aurenyx-shop__section aurenyx-shop__section--compact aurenyx-shop__home-products">
+      <div class="aurenyx-shop__container">
+        <div class="aurenyx-shop__home-products-head">
+          <h2 class="aurenyx-shop__home-products-title">{{ home_collection.title }}</h2>
+          <a class="aurenyx-shop__small-link" href="{{ home_collection.url }}">Wella Produkte ansehen</a>
+        </div>
+        <div class="aurenyx-shop__home-product-row">
+          {% for product in home_collection.products limit: section.settings.home_collection_limit %}
+            {% if product.featured_media %}
+              {% assign image_alt = product.featured_media.alt | default: product.title %}
+              <a class="aurenyx-shop-home-product" href="{{ product.url }}">
+                <span class="aurenyx-shop-home-product__meta">
+                  <strong>{{ product.vendor }}</strong>
+                  {% if product.type != blank %}<span>{{ product.type }}</span>{% endif %}
+                </span>
+                <span class="aurenyx-shop-home-product__media">
+                  {{ product.featured_media | image_url: width: 520 | image_tag: loading: 'lazy', alt: image_alt }}
+                </span>
+                <span class="aurenyx-shop-home-product__title">{{ product.title }}</span>
+                <span class="aurenyx-shop-home-product__price">{{ product.price | money }}</span>
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+  {% liquid
+    assign featured_collection = section.settings.featured_collection
+  %}
+
+  {% if featured_collection != blank and featured_collection.products_count > 0 %}
+    <section class="aurenyx-shop__section aurenyx-shop__section--compact aurenyx-shop__section--panel">
+      <div class="aurenyx-shop__container">
+        <div class="aurenyx-shop__section-head">
+          <div class="aurenyx-shop__eyebrow">Produkte</div>
+          <h2 class="aurenyx-shop__heading">{{ section.settings.featured_heading }}</h2>
+        </div>
+        <div class="aurenyx-shop__product-grid">
+          {% for product in featured_collection.products limit: section.settings.featured_limit %}
+            {% if product.featured_media %}
+              {% assign image_alt = product.featured_media.alt | default: product.title %}
+              <a class="aurenyx-shop-product" href="{{ product.url }}">
+                <span class="aurenyx-shop-product__media">
+                  {{ product.featured_media | image_url: width: 640 | image_tag: loading: 'lazy', alt: image_alt }}
+                </span>
+                <span class="aurenyx-shop-product__body">
+                  <span class="aurenyx-shop-product__vendor">{{ product.vendor }}</span>
+                  <strong>{{ product.title }}</strong>
+                  {% if product.type != blank %}<span>{{ product.type }}</span>{% endif %}
+                  <span class="aurenyx-shop-product__price">{{ product.price | money }}</span>
+                </span>
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+</div>
+
+{% schema %}
+{
+  "name": "AURENYX Shop-Start",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Headline",
+      "default": "Professioneller Friseur- & Beautybedarf."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheadline",
+      "default": "Direkt zum Sortiment: Produkte, Kategorien, Produktbereiche und schnelle Suche nach Artikel, SKU oder EAN."
+    },
+    {
+      "type": "url",
+      "id": "all_products_link",
+      "label": "Link: Wella Produkte",
+      "default": "/collections/wella-professional"
+    },
+    {
+      "type": "url",
+      "id": "featured_link",
+      "label": "Link: Shop-Auswahl",
+      "default": "/collections/alle-produkte"
+    },
+    {
+      "type": "text",
+      "id": "assortment_heading",
+      "label": "Produktsortiment Headline",
+      "default": "Produktkategorien"
+    },
+    {
+      "type": "collection",
+      "id": "home_collection",
+      "label": "Produktblock nach Produktbereiche"
+    },
+    {
+      "type": "range",
+      "id": "home_collection_limit",
+      "label": "Anzahl Produkte im Produktblock",
+      "min": 4,
+      "max": 12,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Optionaler weiterer Produktbereich"
+    },
+    {
+      "type": "text",
+      "id": "featured_heading",
+      "label": "Featured Headline",
+      "default": "Produkte im Shop"
+    },
+    {
+      "type": "range",
+      "id": "featured_limit",
+      "label": "Anzahl Produkte",
+      "min": 4,
+      "max": 12,
+      "step": 4,
+      "default": 8
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category_link",
+      "name": "Produktkategorie",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titel",
+          "default": "Shampoo"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Kurzbeschreibung",
+          "default": "Professionelle Produkte fuer den Salon."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Collection-Link",
+          "default": "/collections/alle-produkte"
+        }
+      ]
+    },
+    {
+      "type": "area_link",
+      "name": "Produktbereich",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titel",
+          "default": "Haarpflege"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Collection-Link",
+          "default": "/collections/alle-produkte"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "AURENYX Shop-Start",
+      "blocks": [
+        { "type": "category_link", "settings": { "title": "Wella Professional", "description": "Salonprodukte von Wella.", "link": "/collections/wella-professional" } },
+        { "type": "category_link", "settings": { "title": "Haarpflege", "description": "Shampoo, Conditioner, Masken und Leave-In.", "link": "/collections/haarpflege" } },
+        { "type": "category_link", "settings": { "title": "Eigenmarke / hioo", "description": "AURENYX PROFESSIONAL und hioo Produkte.", "link": "/collections/aurenyx-professional" } },
+        { "type": "category_link", "settings": { "title": "Shampoo", "description": "Professionelle Shampoos fuer Salon und Fachhandel.", "link": "/collections/shampoo" } },
+        { "type": "category_link", "settings": { "title": "Conditioner", "description": "Pflege, Glanz und Kaemmbarkeit.", "link": "/collections/conditioner" } },
+        { "type": "category_link", "settings": { "title": "Masken & Kuren", "description": "Intensivpflege fuer den Salonalltag.", "link": "/collections/masken-kuren" } },
+        { "type": "category_link", "settings": { "title": "Haarfarbe & Coloration", "description": "Farbe, Toener und Nuancen.", "link": "/collections/haarfarbe-coloration" } },
+        { "type": "category_link", "settings": { "title": "Entwickler & Oxidation", "description": "Oxidanten, Welloxon und Aktivatoren.", "link": "/collections/entwickler-oxidation" } },
+        { "type": "category_link", "settings": { "title": "Blondierung", "description": "Blondierung, Bleach, Magma und Blondor.", "link": "/collections/blondierung" } },
+        { "type": "category_link", "settings": { "title": "Styling & Finish", "description": "Spray, Gel, Wachs und Finish.", "link": "/collections/styling-finish" } },
+        { "type": "area_link", "settings": { "title": "Wella", "link": "/collections/wella-professional" } },
+        { "type": "area_link", "settings": { "title": "AURENYX / hioo", "link": "/collections/aurenyx-professional" } },
+        { "type": "area_link", "settings": { "title": "Comair", "link": "/collections/comair" } },
+        { "type": "area_link", "settings": { "title": "Paul Mitchell", "link": "/collections/paul-mitchell" } },
+        { "type": "area_link", "settings": { "title": "Londa", "link": "/collections/londa-professional" } },
+        { "type": "area_link", "settings": { "title": "Nouvelle", "link": "/collections/nouvelle" } },
+        { "type": "area_link", "settings": { "title": "Sassoon", "link": "/collections/sassoon-professional" } },
+        { "type": "area_link", "settings": { "title": "Alle Produkte", "link": "/collections/alle-produkte" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

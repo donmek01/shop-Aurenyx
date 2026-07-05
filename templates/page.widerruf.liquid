@@ -1,0 +1,62 @@
+<section class="aurenyx-withdrawal-page">
+  <div class="aurenyx-withdrawal-page__inner">
+    <p class="aurenyx-withdrawal-page__eyebrow">Widerruf</p>
+    <h1>Vertrag widerrufen</h1>
+    <p>
+      Hier koennen Sie eine Widerrufserklaerung zu einer Online-Bestellung absenden.
+      Bitte geben Sie die Bestellnummer und die E-Mail-Adresse der Bestellung an.
+    </p>
+
+    {% form 'contact', class: 'aurenyx-withdrawal-form' %}
+      <input type="hidden" name="contact[Betreff]" value="Vertrag widerrufen">
+
+      {% if form.posted_successfully? %}
+        <div class="aurenyx-withdrawal-form__success" role="status">
+          Ihre Widerrufserklaerung wurde uebermittelt. Sie erhalten eine Kopie bzw. Rueckmeldung an die angegebene E-Mail-Adresse.
+        </div>
+      {% endif %}
+
+      {% if form.errors %}
+        <div class="aurenyx-withdrawal-form__error" role="alert">
+          Bitte pruefen Sie die markierten Angaben und senden Sie das Formular erneut.
+        </div>
+      {% endif %}
+
+      <div class="aurenyx-withdrawal-form__grid">
+        <label>
+          Name
+          <input type="text" name="contact[Name]" autocomplete="name" required>
+        </label>
+
+        <label>
+          E-Mail-Adresse
+          <input type="email" name="contact[email]" autocomplete="email" required>
+        </label>
+
+        <label>
+          Bestellnummer
+          <input type="text" name="contact[Bestellnummer]" autocomplete="off" required>
+        </label>
+
+        <label>
+          Telefonnummer optional
+          <input type="tel" name="contact[Telefon]" autocomplete="tel">
+        </label>
+      </div>
+
+      <label>
+        Widerrufserklaerung
+        <textarea name="contact[Widerrufserklaerung]" rows="7" required>Hiermit widerrufe ich den von mir abgeschlossenen Vertrag ueber den Kauf der folgenden Ware(n):</textarea>
+      </label>
+
+      <label class="aurenyx-withdrawal-form__check">
+        <input type="checkbox" name="contact[Bestaetigung]" value="Widerruf bewusst abgesendet" required>
+        Ich moechte den oben genannten Vertrag widerrufen.
+      </label>
+
+      <button type="submit" class="aurenyx-withdrawal-form__submit">
+        Widerruf absenden
+      </button>
+    {% endform %}
+  </div>
+</section>
