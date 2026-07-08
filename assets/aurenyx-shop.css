@@ -1459,3 +1459,313 @@ main[data-template='product'] .product-card .card-gallery img {
     padding: 10px;
   }
 }
+
+/* AURENYX mobile hardening: keep the shop usable on phones, independent of Horizon section settings. */
+@media screen and (max-width: 749px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  body {
+    min-width: 0;
+  }
+
+  #header-group,
+  header-component,
+  .header,
+  .header__row,
+  .header__columns,
+  main,
+  .shopify-section,
+  .page-width,
+  .section,
+  .aurenyx-shop,
+  .aurenyx-shop__container {
+    max-width: 100vw;
+  }
+
+  .header__columns,
+  .header__row,
+  .header__inner {
+    min-width: 0;
+  }
+
+  .header__logo,
+  .header__heading-logo,
+  .header__heading-logo-wrapper img {
+    max-width: min(142px, 44vw);
+    height: auto;
+  }
+
+  .header-actions,
+  .header__icons,
+  .header__column--right {
+    min-width: max-content;
+  }
+
+  .aurenyx-shop__hero {
+    padding: 34px 0 38px;
+  }
+
+  .aurenyx-shop__hero--atelier::after {
+    right: -24vw;
+    bottom: -14px;
+    font-size: 112px;
+  }
+
+  .aurenyx-shop__container {
+    padding-inline: 14px;
+  }
+
+  .aurenyx-shop__title {
+    max-width: 100%;
+    font-size: 40px;
+    line-height: 1.02;
+  }
+
+  .aurenyx-shop__copy {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .aurenyx-shop__search {
+    width: 100%;
+    max-width: none;
+    gap: 8px;
+  }
+
+  .aurenyx-shop__search input,
+  .aurenyx-shop__search button {
+    width: 100%;
+  }
+
+  .aurenyx-shop__quicklinks {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .aurenyx-shop__button,
+  .aurenyx-shop__link-button {
+    width: 100%;
+    min-height: 46px;
+    padding-inline: 14px;
+    text-align: center;
+  }
+
+  .aurenyx-shop__hero-panel {
+    width: 100%;
+    padding: 18px;
+  }
+
+  .aurenyx-shop__hero-panel-head h2 {
+    font-size: 32px;
+  }
+
+  .aurenyx-shop__hero-product {
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .aurenyx-shop__hero-product-media {
+    width: 64px;
+  }
+
+  .aurenyx-shop__trust-grid {
+    gap: 0;
+    padding: 14px;
+  }
+
+  .aurenyx-shop__trust-item {
+    min-height: auto;
+  }
+
+  .aurenyx-shop__trust-item span {
+    font-size: 21px;
+  }
+
+  .aurenyx-shop__section {
+    padding: 38px 0;
+  }
+
+  .aurenyx-shop__assortment {
+    padding: 18px 14px;
+    border-radius: 8px;
+  }
+
+  .aurenyx-shop__heading,
+  .aurenyx-collection-hero h1 {
+    font-size: 34px;
+    line-height: 1.05;
+  }
+
+  .aurenyx-shop__category {
+    min-height: 92px;
+    padding: 14px;
+  }
+
+  .aurenyx-shop__category strong {
+    font-size: 16px;
+  }
+
+  .aurenyx-shop__area-row,
+  .aurenyx-shop__brand-pills,
+  .aurenyx-vendor-filter__links {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    overflow-x: auto;
+    margin-inline: -14px;
+    padding-inline: 14px;
+    scroll-padding-inline: 14px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .aurenyx-shop__area,
+  .aurenyx-shop__brand-pills a,
+  .aurenyx-vendor-filter__links a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .aurenyx-shop__home-products-head,
+  .aurenyx-vendor-slide__head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .aurenyx-shop-home-product--card {
+    flex-basis: min(82vw, 310px);
+  }
+
+  .aurenyx-vendor-slide {
+    flex-basis: min(88vw, 360px);
+    padding: 14px;
+  }
+
+  .aurenyx-vendor-slide__products {
+    grid-template-columns: 1fr;
+  }
+
+  .aurenyx-collection-hero__inner {
+    gap: 18px;
+    padding: 28px 14px 24px;
+  }
+
+  .aurenyx-collection-hero__copy {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  main[data-template='collection'] .facets,
+  main[data-template='search'] .facets,
+  main[data-template='collection'] .facets__form,
+  main[data-template='search'] .facets__form {
+    max-width: 100vw;
+    overflow-x: auto;
+  }
+
+  main[data-template='collection'] .product-grid,
+  main[data-template='search'] .product-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    padding-inline: 14px;
+  }
+
+  main[data-template='collection'] .product-card__content,
+  main[data-template='search'] .product-card__content {
+    padding: 7px;
+  }
+
+  main[data-template='collection'] .aurenyx-product-card-meta,
+  main[data-template='search'] .aurenyx-product-card-meta {
+    min-height: 31px;
+    font-size: 10px;
+  }
+
+  main[data-template='collection'] .card-gallery img,
+  main[data-template='search'] .card-gallery img {
+    padding: 6px;
+  }
+
+  main[data-template='collection'] product-title,
+  main[data-template='search'] product-title {
+    min-height: 35px;
+    font-size: 11px;
+    line-height: 1.28;
+  }
+
+  main[data-template='collection'] product-price,
+  main[data-template='search'] product-price {
+    font-size: 12px;
+  }
+
+  main[data-template='product'] .product-information {
+    --aurenyx-product-media-size: 100%;
+    --aurenyx-product-media-max-height: none;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+    padding-inline: 14px;
+  }
+
+  main[data-template='product'] .product-information__media,
+  main[data-template='product'] media-gallery,
+  main[data-template='product'] .product-details {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  main[data-template='product'] .product-media-container,
+  main[data-template='product'] slideshow-slide.product-media-container {
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
+  }
+
+  main[data-template='product'] .product-media {
+    aspect-ratio: 1 / 1 !important;
+    max-height: none;
+  }
+
+  main[data-template='product'] .product-media__image,
+  main[data-template='product'] .product-media-container img {
+    max-height: none;
+    padding: 12px;
+  }
+
+  main[data-template='product'] .product-details h1,
+  main[data-template='product'] .product-title {
+    font-size: 30px;
+    line-height: 1.1;
+  }
+
+  .aurenyx-withdrawal-button {
+    right: 10px;
+    bottom: 10px;
+    min-height: 40px;
+    max-width: calc(100vw - 20px);
+    padding: 10px 13px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 389px) {
+  .aurenyx-shop__title {
+    font-size: 34px;
+  }
+
+  main[data-template='collection'] .product-grid,
+  main[data-template='search'] .product-grid {
+    gap: 10px !important;
+    padding-inline: 10px;
+  }
+
+  main[data-template='collection'] .product-card__content,
+  main[data-template='search'] .product-card__content {
+    padding: 6px;
+  }
+}
