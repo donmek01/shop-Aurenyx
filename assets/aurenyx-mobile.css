@@ -29,6 +29,13 @@
     min-width: 0;
   }
 
+  #header-component .header__navigation-bar-row,
+  #header-component header-menu:not([variant='mobile']),
+  #header-component nav.header-menu,
+  #header-component .header__menu {
+    display: none !important;
+  }
+
   .header__logo,
   .header__heading-logo,
   .header__heading-logo-wrapper img {
@@ -70,6 +77,7 @@
   .aurenyx-shop__search {
     width: 100%;
     max-width: none;
+    flex-direction: column;
     gap: 8px;
   }
 
