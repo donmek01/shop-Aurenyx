@@ -76,6 +76,7 @@
     {%- render 'theme-styles-variables' -%}
     {%- render 'color-schemes' -%}
     {{ 'aurenyx-shop.css' | asset_url | stylesheet_tag }}
+    {{ 'aurenyx-mobile.css' | asset_url | stylesheet_tag }}
 
     {% if template.name == 'collection' and collection.handle == 'all' and request.design_mode == false %}
       <script>
