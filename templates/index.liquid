@@ -6,8 +6,14 @@
     <div class="aurenyx-shop__container aurenyx-shop__hero-grid">
       <div class="aurenyx-shop__hero-content">
         <div class="aurenyx-shop__eyebrow">AURENYX Professional Shop</div>
-        <h1 class="aurenyx-shop__title">Friseur- & Beautybedarf für Profis.</h1>
-        <p class="aurenyx-shop__copy">Direkt zum Sortiment: Wella, hioo / Eigenmarke, Haarpflege, Coloration, Styling und Friseurbedarf. Suche nach Produkt, Marke, SKU oder EAN.</p>
+        <h1 class="aurenyx-shop__title">Profi-Salonbedarf. Direkt bestellbar.</h1>
+        <p class="aurenyx-shop__copy">Wella zuerst sichtbar, hioo / AURENYX als Eigenmarke, dazu Haarpflege, Coloration, Styling und Friseurbedarf. Suche direkt nach Produkt, Marke, SKU oder EAN.</p>
+
+        <div class="aurenyx-shop__hero-tags" aria-label="Shop Vorteile">
+          <span>Produkte mit Bild im Fokus</span>
+          <span>Lieferzeit 3-4 Tage</span>
+          <span>B2B-tauglich</span>
+        </div>
 
         <form class="aurenyx-shop__search aurenyx-shop__search--hero" action="{{ routes.search_url }}" method="get" role="search">
           <input type="hidden" name="type" value="product">
@@ -27,7 +33,7 @@
         <div class="aurenyx-shop__hero-panel-head">
           <span class="aurenyx-shop__eyebrow">Featured</span>
           <h2>Wella Professional</h2>
-          <p>Chef-Empfehlung für die Startseite: Wella zuerst sichtbar, danach Eigenmarke und Hauptbereiche.</p>
+          <p>Starten Sie mit gefragten Wella-Artikeln. Danach direkt in Eigenmarke, Kategorien oder alle verfügbaren Produkte wechseln.</p>
         </div>
 
         {% if hero_collection != blank and hero_collection.products_count > 0 %}
@@ -55,20 +61,42 @@
   <section class="aurenyx-shop__trust">
     <div class="aurenyx-shop__container aurenyx-shop__trust-grid">
       <div class="aurenyx-shop__trust-item">
-        <span>100.000+</span>
-        <strong>Produkte</strong>
+        <span>Mit Bild</span>
+        <strong>Highlights zuerst sichtbar</strong>
       </div>
       <div class="aurenyx-shop__trust-item">
         <span>13+</span>
         <strong>Jahre Erfahrung</strong>
       </div>
       <div class="aurenyx-shop__trust-item">
-        <span>Flour Sync</span>
-        <strong>Bestand wird abgeglichen</strong>
+        <span>3-4 Tage</span>
+        <strong>Lieferzeit sichtbar</strong>
       </div>
       <div class="aurenyx-shop__trust-item">
         <span>B2B</span>
         <strong>Für Salons & Fachpartner</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="aurenyx-shop__section aurenyx-shop__section--compact aurenyx-shop__action-start">
+    <div class="aurenyx-shop__container">
+      <div class="aurenyx-shop__action-grid">
+        <a class="aurenyx-shop__action-card aurenyx-shop__action-card--primary" href="/collections/wella-professional">
+          <span class="aurenyx-shop__eyebrow">Schnell starten</span>
+          <strong>Wella Professional einkaufen</strong>
+          <em>Pflege, Farbe und Salonbedarf mit Produktbildern zuerst.</em>
+        </a>
+        <a class="aurenyx-shop__action-card" href="/collections/aurenyx-professional">
+          <span class="aurenyx-shop__eyebrow">Eigenmarke</span>
+          <strong>hioo / AURENYX entdecken</strong>
+          <em>Eigene Produkte und Markenbereich für Salons.</em>
+        </a>
+        <a class="aurenyx-shop__action-card" href="/collections/alle-produkte">
+          <span class="aurenyx-shop__eyebrow">Katalog</span>
+          <strong>Alle verfügbaren Produkte</strong>
+          <em>Nach Marke, Kategorie, Preis und Verfügbarkeit filtern.</em>
+        </a>
       </div>
     </div>
   </section>
@@ -118,6 +146,19 @@
         <a class="aurenyx-shop__area" href="/collections/friseurbedarf">Friseurbedarf</a>
         <a class="aurenyx-shop__area" href="/collections/geraete-tools">Geräte & Tools</a>
         <a class="aurenyx-shop__area" href="/collections/alle-produkte">Alle Produkte</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="aurenyx-shop__section aurenyx-shop__section--compact aurenyx-shop__buy-strip">
+    <div class="aurenyx-shop__container">
+      <div class="aurenyx-shop__buy-strip-inner">
+        <div>
+          <div class="aurenyx-shop__eyebrow">Direkt verkaufen</div>
+          <h2>Produkte mit Bild und Bestand nach vorne.</h2>
+          <p>Die Startseite priorisiert kaufbare Artikel mit Produktbild. Artikel ohne Bild bleiben im Shop, werden aber nicht als Highlight gespielt.</p>
+        </div>
+        <a class="aurenyx-shop__button" href="/collections/alle-produkte">Jetzt Sortiment öffnen</a>
       </div>
     </div>
   </section>

@@ -92,6 +92,17 @@
     gap: 10px;
   }
 
+  .aurenyx-shop__hero-tags {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .aurenyx-shop__hero-tags span {
+    justify-content: center;
+    width: 100%;
+  }
+
   .aurenyx-shop__button,
   .aurenyx-shop__link-button {
     width: 100%;
@@ -133,6 +144,19 @@
 
   .aurenyx-shop__section {
     padding: 38px 0;
+  }
+
+  .aurenyx-shop__action-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aurenyx-shop__action-card {
+    min-height: 132px;
+    padding: 17px;
+  }
+
+  .aurenyx-shop__action-card strong {
+    font-size: 22px;
   }
 
   .aurenyx-shop__assortment {
@@ -180,6 +204,16 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 8px;
+  }
+
+  .aurenyx-shop__buy-strip-inner {
+    align-items: stretch;
+    flex-direction: column;
+    padding: 18px;
+  }
+
+  .aurenyx-shop__buy-strip h2 {
+    font-size: 28px;
   }
 
   .aurenyx-shop-home-product--card {
