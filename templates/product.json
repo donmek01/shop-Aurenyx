@@ -221,7 +221,7 @@
               "type": "text",
               "name": "Product description",
               "settings": {
-                "text": "{{ closest.product.description }}",
+                "text": "{% assign cleaned_description = closest.product.description | replace: '<p><strong>Lieferzeit:</strong> 3-4 Tage.</p>', '' | replace: '<p>Lieferzeit: 3-4 Tage.</p>', '' | replace: '<strong>Lieferzeit:</strong> 3-4 Tage.', '' | replace: 'Lieferzeit: 3-4 Tage.', '' %}{{ cleaned_description }}",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
