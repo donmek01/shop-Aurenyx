@@ -218,28 +218,10 @@
               "block_order": []
             },
             "text_aEtTtq": {
-              "type": "text",
+              "type": "custom-liquid",
               "name": "Product description",
               "settings": {
-                "text": "{% assign cleaned_description = closest.product.description | replace: '<p><strong>Lieferzeit:</strong> 3-4 Tage.</p>', '' | replace: '<p>Lieferzeit: 3-4 Tage.</p>', '' | replace: '<strong>Lieferzeit:</strong> 3-4 Tage.', '' | replace: 'Lieferzeit: 3-4 Tage.', '' %}{{ cleaned_description }}",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-primary--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "custom_liquid": "{{ closest.product.description | replace: '<p><strong>Lieferzeit:</strong> 3-4 Tage.</p>', '' | replace: '<p>Lieferzeit: 3-4 Tage.</p>', '' | replace: '<strong>Lieferzeit:</strong> 3-4 Tage.', '' | replace: 'Lieferzeit: 3-4 Tage.', '' }}"
               },
               "blocks": {}
             },
