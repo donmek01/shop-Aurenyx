@@ -652,12 +652,96 @@ button[type='submit'] {
   padding: 16px;
 }
 
+.aurenyx-product-meta__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(224, 209, 187, .8);
+}
+
+.aurenyx-product-meta__head strong {
+  color: #4b3a2b;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.aurenyx-product-meta__head span {
+  flex: 0 0 auto;
+  padding: 5px 9px;
+  border: 1px solid rgba(194, 146, 95, .35);
+  border-radius: 999px;
+  background: rgba(237, 204, 163, .22);
+  color: #8a5a31;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.aurenyx-product-meta__row {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(232, 222, 206, .7);
+}
+
+.aurenyx-product-meta__row span {
+  color: #8a7b68;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.aurenyx-product-meta__row strong {
+  overflow-wrap: anywhere;
+  color: #4b3a2b;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.aurenyx-product-meta__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 12px;
+}
+
+.aurenyx-product-meta__trust span {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(245, 239, 229, .95);
+  color: #5d4b3b;
+  font-size: 12px;
+  font-weight: 800;
+}
+
 .product-card[data-no-image='true'] {
-  opacity: .58;
+  opacity: .82;
 }
 
 .product-card[data-no-image='true'] .product-card__content {
-  background: #f5efe5;
+  border-style: dashed;
+  background: #f7f0e6;
+  box-shadow: none;
+}
+
+.product-card[data-no-image='true'] .card-gallery {
+  display: none;
+}
+
+.product-card[data-no-image='true'] .aurenyx-product-card-meta::after {
+  display: inline-flex;
+  margin-top: 7px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(194, 146, 95, .16);
+  color: #8a5a31;
+  content: 'Bild folgt';
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-transform: uppercase;
 }
 
 main[data-template='collection'] .card-gallery,

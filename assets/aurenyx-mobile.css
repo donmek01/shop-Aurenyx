@@ -289,6 +289,27 @@
     line-height: 1.1;
   }
 
+  main[data-template='product'] .aurenyx-product-meta {
+    padding: 14px;
+  }
+
+  main[data-template='product'] .aurenyx-product-meta__head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  main[data-template='product'] .aurenyx-product-meta__row {
+    grid-template-columns: 1fr;
+    gap: 3px;
+    padding: 8px 0;
+  }
+
+  main[data-template='product'] .aurenyx-product-meta__trust span {
+    width: 100%;
+    text-align: center;
+  }
+
   .aurenyx-withdrawal-button {
     right: 10px;
     bottom: 10px;

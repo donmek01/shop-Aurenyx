@@ -247,7 +247,7 @@
               "type": "custom-liquid",
               "name": "B2B Produktdaten",
               "settings": {
-                "custom_liquid": "<div class=\"aurenyx-product-meta\"><strong>{{ closest.product.vendor }}</strong>{% if closest.product.type != blank %}<br>Produkttyp: {{ closest.product.type }}{% endif %}{% assign current_variant = closest.product.selected_or_first_available_variant %}{% if current_variant.sku != blank %}<br>SKU: {{ current_variant.sku }}{% endif %}{% if current_variant.barcode != blank %}<br>EAN: {{ current_variant.barcode }}{% endif %}<br>Fuer Salons & Fachpartner.</div>"
+                "custom_liquid": "{% assign current_variant = closest.product.selected_or_first_available_variant %}<div class=\"aurenyx-product-meta\"><div class=\"aurenyx-product-meta__head\"><strong>{{ closest.product.vendor }}</strong><span>Profi-Sortiment</span></div>{% if closest.product.type != blank %}<div class=\"aurenyx-product-meta__row\"><span>Produkttyp</span><strong>{{ closest.product.type }}</strong></div>{% endif %}{% if current_variant.sku != blank %}<div class=\"aurenyx-product-meta__row\"><span>SKU</span><strong>{{ current_variant.sku }}</strong></div>{% endif %}{% if current_variant.barcode != blank %}<div class=\"aurenyx-product-meta__row\"><span>EAN</span><strong>{{ current_variant.barcode }}</strong></div>{% endif %}<div class=\"aurenyx-product-meta__trust\"><span>Lieferzeit: 3-4 Tage</span><span>Fuer Salons & Fachpartner</span></div></div>"
               },
               "blocks": {}
             }
