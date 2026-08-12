@@ -18,8 +18,6 @@
     {%- else -%}
       <link rel="icon" type="image/png" href="{{ 'aurenyx-logo-trans.png' | asset_url }}">
     {%- endif -%}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
     {% # theme-check-disable RemoteAsset %}
     {% comment %} This a way to wait for main content to load when navigating to a new page so that the view transitions can work consistently {% endcomment %}
     {% if settings.transition_to_main_product or settings.page_transition_enabled %}
@@ -33,9 +31,62 @@
 
     {% assign aurenyx_site_name = 'AURENYX Shop' %}
     {% assign aurenyx_default_description = 'Professioneller Friseur- und Beautybedarf fuer Salons, Fachpartner und Gewerbekunden: Wella Professional, hioo / AURENYX, L Oreal, Efalock, Haarpflege, Coloration, Styling und Friseurbedarf direkt online bestellen.' %}
+    {% assign aurenyx_collection_title = blank %}
+    {% assign aurenyx_collection_description = blank %}
+    {% if request.page_type == 'collection' and collection.handle != blank %}
+      {% case collection.handle %}
+        {% when 'wella-professional' %}
+          {% assign aurenyx_collection_title = 'Wella Professional kaufen - Salonbedarf | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Wella Professional Produkte fuer Salon und Fachhandel: Haarpflege, Coloration, Styling und professionelle Wella Artikel online kaufen.' %}
+        {% when 'loreal-professional' %}
+          {% assign aurenyx_collection_title = 'L Oreal Professional kaufen - Friseurbedarf | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'L Oreal Professional Produkte fuer Friseursalons: Haarpflege, Farbe, Styling, Entwickler und professionelle Salonartikel online kaufen.' %}
+        {% when 'efalock' %}
+          {% assign aurenyx_collection_title = 'Efalock Friseurbedarf kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Efalock Friseurbedarf fuer Salons: Tools, Zubehoer, Verbrauchsartikel und Organisation fuer Friseure online kaufen.' %}
+        {% when 'aurenyx-professional' %}
+          {% assign aurenyx_collection_title = 'hioo & AURENYX Professional kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'hioo und AURENYX Professional Eigenmarke fuer Haarpflege, Pflegeprogramme und Salonbedarf online kaufen.' %}
+        {% when 'haarpflege' %}
+          {% assign aurenyx_collection_title = 'Professionelle Haarpflege fuer Salons kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Professionelle Haarpflege: Shampoo, Conditioner, Masken, Kuren und Leave-In Produkte fuer Salons und Fachpartner.' %}
+        {% when 'haarfarbe-coloration' %}
+          {% assign aurenyx_collection_title = 'Coloration & Haarfarbe fuer Salons kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Coloration, Haarfarbe, Toener, Entwickler, Blondierung und Farbservice-Zubehoer fuer professionelle Salons.' %}
+        {% when 'styling-finish' %}
+          {% assign aurenyx_collection_title = 'Styling & Finish Produkte kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Styling und Finish fuer Salons: Spray, Gel, Wachs, Volumen, Textur, Glanz und professionelle Formgebung.' %}
+        {% when 'friseurbedarf' %}
+          {% assign aurenyx_collection_title = 'Friseurbedarf fuer Salons kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Friseurbedarf fuer den Salonalltag: Zubehoer, Verbrauchsmaterial, Organisation, Arbeitsmittel und Tools online kaufen.' %}
+        {% when 'geraete-tools' %}
+          {% assign aurenyx_collection_title = 'Friseurgeraete & Salon-Tools kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Professionelle Geraete und Tools fuer Friseure: Technik, Stylingwerkzeuge und Salon-Zubehoer online kaufen.' %}
+        {% when 'alle-produkte' %}
+          {% assign aurenyx_collection_title = 'Alle Friseur- und Beautyprodukte | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Alle aktiven Produkte im AURENYX Shop: Friseurbedarf, Haarpflege, Coloration, Styling, Tools und Salonartikel.' %}
+        {% when 'comair' %}
+          {% assign aurenyx_collection_title = 'Comair Friseurbedarf kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Comair Produkte fuer Salons: Friseurbedarf, Zubehoer, Tools und Verbrauchsartikel fuer den professionellen Alltag.' %}
+        {% when 'paul-mitchell' %}
+          {% assign aurenyx_collection_title = 'Paul Mitchell Produkte kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Paul Mitchell Salonprodukte online kaufen: professionelle Haarpflege, Styling und Pflegeprodukte fuer Friseure.' %}
+        {% when 'londa-professional' %}
+          {% assign aurenyx_collection_title = 'Londa Professional kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Londa Professional Produkte fuer Salons: Haarfarbe, Pflege, Styling und professionelle Friseurprodukte online kaufen.' %}
+        {% when 'nouvelle' %}
+          {% assign aurenyx_collection_title = 'Nouvelle Salonprodukte kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Nouvelle Produkte fuer professionelle Salons: Pflege, Farbe, Styling und Friseurbedarf online kaufen.' %}
+        {% when 'sassoon-professional' %}
+          {% assign aurenyx_collection_title = 'Sassoon Professional kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Sassoon Professional Produkte fuer Friseure: professionelle Salonpflege, Farbe und Styling online kaufen.' %}
+      {% endcase %}
+    {% endif %}
     {% assign seo_title = page_title %}
     {% if request.page_type == 'index' %}
       {% assign seo_title = 'Friseurbedarf & Beautybedarf online kaufen - AURENYX Shop' %}
+    {% elsif aurenyx_collection_title != blank %}
+      {% assign seo_title = aurenyx_collection_title %}
     {% elsif seo_title == blank or seo_title == shop.name or seo_title == 'My Store' %}
       {% assign seo_title = aurenyx_site_name %}
     {% elsif seo_title contains 'My Store' %}
@@ -55,6 +106,8 @@
     {% assign seo_description = page_description %}
     {% if request.page_type == 'index' %}
       {% assign seo_description = aurenyx_default_description %}
+    {% elsif aurenyx_collection_description != blank %}
+      {% assign seo_description = aurenyx_collection_description %}
     {% elsif seo_description == blank or seo_description == shop.name or seo_description == 'My Store' %}
       {% assign seo_description = aurenyx_default_description %}
     {% endif %}
