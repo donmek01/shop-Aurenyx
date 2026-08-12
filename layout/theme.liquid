@@ -96,6 +96,34 @@
       {% endcase %}
     {% endif %}
     {% assign seo_title = page_title %}
+    {% if aurenyx_collection_title == blank %}
+      {% case page_title %}
+        {% when 'Wella Professional' %}
+          {% assign aurenyx_collection_title = 'Wella Professional kaufen - Salonbedarf | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Wella Professional Produkte fuer Salon und Fachhandel: Haarpflege, Coloration, Styling und professionelle Wella Artikel online kaufen.' %}
+        {% when 'Efalock' %}
+          {% assign aurenyx_collection_title = 'Efalock Friseurbedarf kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Efalock Friseurbedarf fuer Salons: Tools, Zubehoer, Verbrauchsartikel und Organisation fuer Friseure online kaufen.' %}
+        {% when 'AURENYX Professional / hioo' %}
+          {% assign aurenyx_collection_title = 'hioo & AURENYX Professional kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'hioo und AURENYX Professional Eigenmarke fuer Haarpflege, Pflegeprogramme und Salonbedarf online kaufen.' %}
+        {% when 'Haarpflege' %}
+          {% assign aurenyx_collection_title = 'Professionelle Haarpflege fuer Salons kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Professionelle Haarpflege: Shampoo, Conditioner, Masken, Kuren und Leave-In Produkte fuer Salons und Fachpartner.' %}
+        {% when 'Coloration' %}
+          {% assign aurenyx_collection_title = 'Coloration & Haarfarbe fuer Salons kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Coloration, Haarfarbe, Toener, Entwickler, Blondierung und Farbservice-Zubehoer fuer professionelle Salons.' %}
+        {% when 'Styling' %}
+          {% assign aurenyx_collection_title = 'Styling & Finish Produkte kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Styling und Finish fuer Salons: Spray, Gel, Wachs, Volumen, Textur, Glanz und professionelle Formgebung.' %}
+        {% when 'Friseurbedarf' %}
+          {% assign aurenyx_collection_title = 'Friseurbedarf fuer Salons kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Friseurbedarf fuer den Salonalltag: Zubehoer, Verbrauchsmaterial, Organisation, Arbeitsmittel und Tools online kaufen.' %}
+        {% when 'Alle Produkte' %}
+          {% assign aurenyx_collection_title = 'Alle Friseur- und Beautyprodukte | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Alle aktiven Produkte im AURENYX Shop: Friseurbedarf, Haarpflege, Coloration, Styling, Tools und Salonartikel.' %}
+      {% endcase %}
+    {% endif %}
     {% if request.page_type == 'index' %}
       {% assign seo_title = 'Friseurbedarf & Beautybedarf online kaufen - AURENYX Shop' %}
     {% elsif aurenyx_collection_title != blank %}
