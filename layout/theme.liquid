@@ -31,15 +31,19 @@
       >
     {% endif %}
 
+    {% assign aurenyx_site_name = 'AURENYX Shop' %}
+    {% assign aurenyx_default_description = 'Professioneller Friseur- und Beautybedarf fuer Salons, Fachpartner und Gewerbekunden: Wella Professional, hioo / AURENYX, L Oreal, Efalock, Haarpflege, Coloration, Styling und Friseurbedarf direkt online bestellen.' %}
     {% assign seo_title = page_title %}
-    {% if seo_title == blank or seo_title == shop.name or seo_title == 'My Store' %}
-      {% assign seo_title = 'AURENYX Shop' %}
+    {% if request.page_type == 'index' %}
+      {% assign seo_title = 'Friseurbedarf & Beautybedarf online kaufen - AURENYX Shop' %}
+    {% elsif seo_title == blank or seo_title == shop.name or seo_title == 'My Store' %}
+      {% assign seo_title = aurenyx_site_name %}
     {% elsif seo_title contains 'My Store' %}
-      {% assign seo_title = seo_title | replace: 'My Store', 'AURENYX Shop' %}
+      {% assign seo_title = seo_title | replace: 'My Store', aurenyx_site_name %}
     {% elsif seo_title contains shop.name %}
-      {% assign seo_title = seo_title | replace: shop.name, 'AURENYX Shop' %}
+      {% assign seo_title = seo_title | replace: shop.name, aurenyx_site_name %}
     {% else %}
-      {% assign seo_title = seo_title | append: ' – AURENYX Shop' %}
+      {% assign seo_title = seo_title | append: ' - AURENYX Shop' %}
     {% endif %}
 
     <title>
@@ -48,24 +52,31 @@
       {%- if current_page != 1 %} &ndash; Seite {{ current_page }}{% endif -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
+    {% assign seo_description = page_description %}
+    {% if request.page_type == 'index' %}
+      {% assign seo_description = aurenyx_default_description %}
+    {% elsif seo_description == blank or seo_description == shop.name or seo_description == 'My Store' %}
+      {% assign seo_description = aurenyx_default_description %}
+    {% endif %}
+
+    {% if seo_description %}
+      <meta name="description" content="{{ seo_description | escape }}">
     {% else %}
       <meta
         name="description"
-        content="AURENYX Shop fuer professionellen Friseur- und Beautybedarf: Wella, hioo, Haarpflege, Coloration, Styling und Friseurbedarf fuer Salons und Fachpartner."
+        content="{{ aurenyx_default_description | escape }}"
       >
     {% endif %}
 
     <link rel="canonical" href="{{ canonical_url }}">
-    <meta property="og:site_name" content="AURENYX Shop">
+    <meta property="og:site_name" content="{{ aurenyx_site_name }}">
     <meta property="og:url" content="{{ canonical_url }}">
     <meta property="og:title" content="{{ seo_title | escape }}">
     <meta property="og:type" content="{% if request.page_type == 'product' %}product{% else %}website{% endif %}">
-    <meta property="og:description" content="{{ page_description | default: shop.description | default: shop.name | escape }}">
+    <meta property="og:description" content="{{ seo_description | escape }}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ seo_title | escape }}">
-    <meta name="twitter:description" content="{{ page_description | default: shop.description | default: shop.name | escape }}">
+    <meta name="twitter:description" content="{{ seo_description | escape }}">
     {% if request.page_type == 'search' %}
       <meta name="robots" content="noindex,follow">
     {% endif %}
@@ -75,7 +86,7 @@
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": {{ shop.name | json }},
+        "name": {{ aurenyx_site_name | json }},
         "url": {{ shop.url | json }},
         "potentialAction": {
           "@type": "SearchAction",

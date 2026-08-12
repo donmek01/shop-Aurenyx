@@ -288,7 +288,8 @@
   {
     "@context": "http://schema.org",
     "@type": "Organization",
-    "name": {{ shop.name | json }},
+    "name": "AURENYX Shop",
+    "legalName": "AURENYX GmbH",
     {% if settings.logo %}
       "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
     {% endif %}
@@ -330,7 +331,7 @@
     class="header__underlay header__underlay-open"
   ></div>
   {%- if request.page_type == 'index' -%}
-    <h1 class="visually-hidden">{{ shop.name }}</h1>
+    <div class="visually-hidden" aria-hidden="true">AURENYX Shop</div>
   {%- endif -%}
   {% for row in rows %}
     {% liquid
