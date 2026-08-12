@@ -82,6 +82,19 @@
           {% assign aurenyx_collection_description = 'Sassoon Professional Produkte fuer Friseure: professionelle Salonpflege, Farbe und Styling online kaufen.' %}
       {% endcase %}
     {% endif %}
+    {% if request.page_type == 'collection' and aurenyx_collection_title == blank and collection.title != blank %}
+      {% case collection.title %}
+        {% when 'Wella Professional' %}
+          {% assign aurenyx_collection_title = 'Wella Professional kaufen - Salonbedarf | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Wella Professional Produkte fuer Salon und Fachhandel: Haarpflege, Coloration, Styling und professionelle Wella Artikel online kaufen.' %}
+        {% when 'Efalock' %}
+          {% assign aurenyx_collection_title = 'Efalock Friseurbedarf kaufen | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Efalock Friseurbedarf fuer Salons: Tools, Zubehoer, Verbrauchsartikel und Organisation fuer Friseure online kaufen.' %}
+        {% when 'Alle Produkte' %}
+          {% assign aurenyx_collection_title = 'Alle Friseur- und Beautyprodukte | AURENYX Shop' %}
+          {% assign aurenyx_collection_description = 'Alle aktiven Produkte im AURENYX Shop: Friseurbedarf, Haarpflege, Coloration, Styling, Tools und Salonartikel.' %}
+      {% endcase %}
+    {% endif %}
     {% assign seo_title = page_title %}
     {% if request.page_type == 'index' %}
       {% assign seo_title = 'Friseurbedarf & Beautybedarf online kaufen - AURENYX Shop' %}
